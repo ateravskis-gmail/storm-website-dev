@@ -73,26 +73,15 @@ export default function HowItWorks() {
                 <h3 className="text-3xl font-bold mb-4 text-gray-900">{step.title}</h3>
                 <p className="text-lg text-gray-600 leading-relaxed">{step.description}</p>
               </div>
-              <div className={`flex-1 relative h-80 w-full rounded-2xl overflow-hidden ${index === 0 || index === 1 || index === 2 || index === 3 ? 'shadow-[0_20px_60px_-12px_rgba(0,0,0,0.25)] bg-white' : 'shadow-2xl'}`}>
-                {index === 0 || index === 1 || index === 2 || index === 3 ? (
-                  <img
-                    src={step.image}
-                    alt={step.title}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    style={{ objectPosition: index === 0 ? 'top left' : 'center' }}
-                  />
-                ) : (
-                  <>
-                    <Image
-                      src={step.image}
-                      alt={step.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-storm-dark/30 to-transparent" />
-                  </>
-                )}
+              <div className={`flex-1 relative h-80 w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(0,0,0,0.25)] bg-white`}>
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                  className="object-cover"
+                  style={{ objectPosition: index === 0 ? 'top left' : 'center' }}
+                />
               </div>
             </motion.div>
           ))}

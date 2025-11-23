@@ -23,7 +23,7 @@ const features = [
     title: 'Built for Your Team',
     description: (
       <>
-   <span className="font-bold text-gradient">Unlimited seats</span> allow you to invite your entire SWPPP writing team. Thanks to Storm's cloud-based system, 
+   <span className="font-bold text-gradient">Unlimited seats</span> allow you to invite your entire SWPPP writing team. Thanks to Storm&apos;s cloud-based system, 
    your team can effortlessly collaborate and review SWPPPs from the office, the field, or at home.
    </>
     ),
@@ -39,7 +39,7 @@ const features = [
     title: 'Easy Revisions',
     description: (
       <>
-      Keep your projects up-to-date without breaking a sweat, with Storm's revisions tracking feature. Revise, certify, and sign all in the app.
+      Keep your projects up-to-date without breaking a sweat, with Storm&apos;s revisions tracking feature. Revise, certify, and sign all in the app.
       </>
     ),
     gradient: 'from-cyan-400 via-blue-500 to-indigo-600',
@@ -69,7 +69,7 @@ const features = [
     title: 'Automatic Risk Determination',
     description: (
       <>
-      Storm uses your project location to automatically query the R, K, LS, and Receiving Water Risk datasets to determine your project's overall risk level.
+      Storm uses your project location to automatically query the R, K, LS, and Receiving Water Risk datasets to determine your project&apos;s overall risk level.
       </>
     ),
     gradient: 'from-purple-400 via-pink-500 to-rose-600',
@@ -84,7 +84,7 @@ const features = [
     title: 'Smart Discharge Mapping',
     description: (
       <>
-      Storm's built-in discharge mapping tools allow you to quickly and clearly map your project's discharge points.
+      Storm&apos;s built-in discharge mapping tools allow you to quickly and clearly map your project&apos;s discharge points.
       </>
     ),
     gradient: 'from-violet-400 via-purple-500 to-fuchsia-600',

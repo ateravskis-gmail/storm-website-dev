@@ -10,8 +10,8 @@ const testimonials = [
     role: 'Environmental Consultant',
     company: 'WGR Southwest, Inc.',
     content: (
-      <>'As the creator of the Connections Course and the Chief Compliance Officer of Storm, 
-      I'm so excited to help bring Storm to life. We're now using it in house at WGR Southwest, 
+      <>&apos;As the creator of the Connections Course and the Chief Compliance Officer of Storm, 
+      I&apos;m so excited to help bring Storm to life. We&apos;re now using it in house at WGR Southwest, 
       and it is greatly reducing the average time our staff spends writing SWPPPs.
       </>
     ),

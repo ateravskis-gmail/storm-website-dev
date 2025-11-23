@@ -74,7 +74,7 @@ export default function ExamplePDF() {
                     Storm Business Park - Traditional Risk 2
                   </h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    We prepared a SWPPP for a fictional project in the Los Angeles Region 4 area called "Storm Business Park."
+                    We prepared a SWPPP for a fictional project in the Los Angeles Region 4 area called &quot;Storm Business Park.&quot;
                     The project is a new commercial development on a property that was previously an auto wrecking yard. The receiving water has TMDL impairments.
                   </p>
                   <motion.a
