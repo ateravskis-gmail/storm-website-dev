@@ -19,6 +19,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const linkColor = scrolled
+    ? 'text-gray-700 hover:text-storm-primary'
+    : 'text-white/70 hover:text-white'
+  const logoSrc = scrolled ? '/storm-logo.png' : '/storm-logo-white.png'
+
   if (!mounted) {
     return (
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -29,7 +34,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/storm-logo.png"
+                  src={logoSrc}
                   alt="Storm Logo"
                   width={150}
                   height={50}
@@ -39,9 +44,10 @@ export default function Navbar() {
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-700 hover:text-storm-primary transition-colors">Features</a>
-              <a href="#how-it-works" className="text-gray-700 hover:text-storm-primary transition-colors">How It Works</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-storm-primary transition-colors">Testimonials</a>
+              <a href="#features" className={`${linkColor} transition-colors`}>Features</a>
+              <a href="#how-it-works" className={`${linkColor} transition-colors`}>How It Works</a>
+              <a href="#testimonials" className={`${linkColor} transition-colors`}>Testimonials</a>
+              <a href="#pricing" className={`${linkColor} transition-colors`}>Pricing</a>
               <a 
                 href="https://app.getstorm.io"
                 target="_blank"
@@ -83,7 +89,7 @@ export default function Navbar() {
                 className="flex items-center"
               >
                 <Image
-                  src="/storm-logo.png"
+                  src={logoSrc}
                   alt="Storm Logo"
                   width={150}
                   height={50}
@@ -96,14 +102,17 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-700 hover:text-storm-primary transition-colors">
+            <a href="#features" className={`${linkColor} transition-colors`}>
               Features
             </a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-storm-primary transition-colors">
+            <a href="#how-it-works" className={`${linkColor} transition-colors`}>
               How It Works
             </a>
-            <a href="#testimonials" className="text-gray-700 hover:text-storm-primary transition-colors">
+            <a href="#testimonials" className={`${linkColor} transition-colors`}>
               Testimonials
+            </a>
+            <a href="#pricing" className={`${linkColor} transition-colors`}>
+              Pricing
             </a>
             <motion.a
               href="https://app.getstorm.io"
@@ -146,6 +155,7 @@ export default function Navbar() {
               <a href="#features" className="block text-gray-700 hover:text-storm-primary">Features</a>
               <a href="#how-it-works" className="block text-gray-700 hover:text-storm-primary">How It Works</a>
               <a href="#testimonials" className="block text-gray-700 hover:text-storm-primary">Testimonials</a>
+              <a href="#pricing" className="block text-gray-700 hover:text-storm-primary">Pricing</a>
               <a 
                 href="https://app.getstorm.io"
                 target="_blank"
