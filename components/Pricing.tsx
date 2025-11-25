@@ -193,12 +193,6 @@ export default function Pricing() {
                 plan.highlight ? 'border-storm-primary/40 shadow-storm-primary/20' : 'border-gray-100'
               }`}
             >
-              {plan.badge && (
-                <span className="absolute -top-4 right-6 rounded-full bg-emerald-100 text-emerald-600 text-xs font-semibold px-3 py-1 shadow">
-                  {plan.badge}
-                </span>
-              )}
-
               <div className="mb-6">
                 <h3 className="text-2xl font-semibold text-gray-900">{plan.name}</h3>
                 <p className="text-gray-500">{plan.description}</p>
@@ -221,7 +215,7 @@ export default function Pricing() {
               </div>
 
               <ul className="space-y-3 mb-8">
-                {plan.features.map((feature) => (
+                {plan.features.map((feature, featureIndex) => (
                   <li key={feature.key} className="flex items-center gap-3 text-gray-700">
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                       <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
@@ -232,7 +226,10 @@ export default function Pricing() {
                         />
                       </svg>
                     </span>
-                    <span>{feature.content}</span>
+                    <span>
+                      {feature.content}
+                      {featureIndex === 0 && <sup className="text-storm-primary ml-1">*</sup>}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -252,6 +249,19 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-8"
+        >
+          <p className="text-sm text-gray-600">
+            <sup className="text-storm-primary mr-1">*</sup>
+            Currently supporting California CGP (traditional and LUP) projects. More permits and other States coming soon.
+          </p>
+        </motion.div>
 
         <div className="mt-12 max-w-xl mx-auto">
           <motion.div

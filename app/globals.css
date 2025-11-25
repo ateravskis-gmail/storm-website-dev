@@ -20,6 +20,19 @@
   .bg-gradient-storm {
     @apply bg-gradient-to-r from-storm-primary to-storm-secondary;
   }
+  
+  .typewriter-cursor {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
 }
 
 

@@ -2,16 +2,73 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import VideoModal from './VideoModal'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const [displayedText, setDisplayedText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const isInitialMount = useRef(true)
+
+  const userTypes = ['Civil Engineers', 'Stormwater Consultants', 'Contractors', 'Developers', 'Landowners']
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
+    const currentText = userTypes[currentIndex]
+    let timeout: NodeJS.Timeout
+
+    // Check if we've transitioned to a new text (mismatch)
+    const textMatches = displayedText.length === 0 || currentText.startsWith(displayedText)
+    
+    // Small delay before starting to type the first text on initial mount only
+    // For transitions, we handle them in the mismatch check above
+    if (displayedText.length === 0 && currentIndex === 0 && !isDeleting) {
+      timeout = setTimeout(() => {
+        setDisplayedText(currentText.slice(0, 1))
+        isInitialMount.current = false
+      }, isInitialMount.current ? 500 : 0)
+    } else if (!isDeleting && !textMatches && displayedText.length > 0) {
+      // We've transitioned to a new text, start typing immediately
+      timeout = setTimeout(() => {
+        setDisplayedText(currentText.slice(0, 1))
+      }, 0)
+    } else if (!isDeleting && displayedText.length < currentText.length && textMatches) {
+      // Typing forward
+      timeout = setTimeout(() => {
+        setDisplayedText(currentText.slice(0, displayedText.length + 1))
+      }, 100)
+    } else if (!isDeleting && displayedText.length === currentText.length) {
+      // Finished typing, wait then start deleting
+      timeout = setTimeout(() => {
+        setIsDeleting(true)
+      }, 2000)
+    } else if (isDeleting && displayedText.length > 0) {
+      // Deleting
+      timeout = setTimeout(() => {
+        setDisplayedText(currentText.slice(0, displayedText.length - 1))
+      }, 50)
+    } else if (isDeleting && displayedText.length === 0) {
+      // Finished deleting, move to next
+      const nextIndex = (currentIndex + 1) % userTypes.length
+      const nextText = userTypes[nextIndex]
+      setIsDeleting(false)
+      setCurrentIndex(nextIndex)
+      // Start typing the first character immediately
+      timeout = setTimeout(() => {
+        setDisplayedText(nextText.slice(0, 1))
+      }, 0)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [mounted, displayedText, currentIndex, isDeleting])
 
   if (!mounted) {
     return (
@@ -30,7 +87,10 @@ export default function Hero() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <div className="inline-block px-4 py-2 bg-storm-primary/10 rounded-full mb-6">
-                <span className="text-storm-primary font-semibold">Professional SWPPP Writing</span>
+                <span className="text-storm-primary font-semibold">
+                  For {displayedText}
+                  <span className="typewriter-cursor ml-1">|</span>
+                </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 Write Construction SWPPPs
@@ -109,7 +169,10 @@ export default function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-block px-4 py-2 bg-storm-primary/10 rounded-full mb-6"
             >
-              <span className="text-storm-primary font-semibold">Professional SWPPP Writing</span>
+              <span className="text-storm-primary font-semibold">
+                For {displayedText}
+                <span className="typewriter-cursor ml-1">|</span>
+              </span>
             </motion.div>
             
             <motion.h1

@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import VideoModal from './VideoModal'
 
 export default function ExamplePDF() {
   const [mounted, setMounted] = useState(false)
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -77,28 +79,38 @@ export default function ExamplePDF() {
                     We prepared a SWPPP for a fictional project in the Los Angeles Region 4 area called &quot;Storm Business Park.&quot;
                     The project is a new commercial development on a property that was previously an auto wrecking yard. The receiving water has TMDL impairments.
                   </p>
-                  <motion.a
-                    href="/Storm Business Park-69236f7caac38601adc9e053.pdf"
-                    download
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-storm text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <svg 
-                      className="w-5 h-5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <motion.a
+                      href="/Storm Business Park-69236f7caac38601adc9e053.pdf"
+                      download
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-storm text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
-                      />
-                    </svg>
-                    Download Example PDF
-                  </motion.a>
+                      <svg 
+                        className="w-5 h-5" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                        />
+                      </svg>
+                      Download Example PDF
+                    </motion.a>
+                    <motion.button
+                      onClick={() => setIsVideoModalOpen(true)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-8 py-4 bg-white text-storm-primary rounded-full font-semibold text-lg border-2 border-storm-primary hover:bg-storm-light transition-colors"
+                    >
+                      Watch Demo
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -109,6 +121,13 @@ export default function ExamplePDF() {
           </div>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoUrl="https://player.vimeo.com/video/1139431440?h=5aba4e318d"
+      />
     </section>
   )
 }
