@@ -28,7 +28,7 @@ export default function SaleBanner() {
               <span className="font-bold text-white bg-white/10 px-2 py-1 rounded-md tracking-wide">
                 STORM50
               </span>{' '}
-              at checkout to lock in our biggest discount of the year.
+              at checkout to lock in this limited time offer.
             </p>
           </motion.div>
 
