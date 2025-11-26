@@ -3,7 +3,7 @@
 import { ReactNode, useState } from 'react'
 import { motion } from 'framer-motion'
 
-type BillingCycle = 'monthly' | 'yearly'
+type BillingCycle = 'monthly' | 'annual'
 
 type FeatureItem = {
   key: string
@@ -96,7 +96,7 @@ const pricingPlans: Record<
       features: businessFeatures,
     },
   ],
-  yearly: [
+  annual: [
     {
       name: 'Express',
       price: '$37.50',
@@ -135,7 +135,7 @@ const pricingPlans: Record<
 }
 
 export default function Pricing() {
-  const [billingCycle, setBillingCycle] = useState<BillingCycle>('yearly')
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('annual')
   const plans = pricingPlans[billingCycle]
 
   return (
@@ -149,13 +149,13 @@ export default function Pricing() {
             Choose the plan that fits your workflow
           </h2>
           <p className="text-lg text-gray-600">
-            Toggle between monthly or yearly billing and lock in serious savings with annual plans.
+            Lock in serious savings with annual plans.
           </p>
         </div>
 
         <div className="flex justify-center mb-12">
           <div className="inline-flex bg-white p-1 rounded-full shadow-lg shadow-black/5 border border-gray-100">
-            {(['monthly', 'yearly'] as BillingCycle[]).map((cycle) => {
+            {(['monthly', 'annual'] as BillingCycle[]).map((cycle) => {
               const isActive = billingCycle === cycle
               return (
                 <button
@@ -173,7 +173,7 @@ export default function Pricing() {
                     />
                   )}
                   <span className="relative z-10 capitalize">
-                    {cycle === 'monthly' ? 'Monthly' : 'Yearly'}
+                    {cycle === 'monthly' ? 'Monthly' : 'Annual'}
                   </span>
                 </button>
               )
@@ -205,12 +205,6 @@ export default function Pricing() {
                 </div>
                 {plan.billingNote && (
                   <p className="text-sm text-gray-500 mt-1">{plan.billingNote}</p>
-                )}
-                {plan.originalPrice && plan.savingsCopy && (
-                  <p className="text-sm text-gray-500 mt-2">
-                    <span className="line-through mr-2">{plan.originalPrice}</span>
-                    <span className="text-emerald-600 font-semibold">{plan.savingsCopy}</span>
-                  </p>
                 )}
               </div>
 
