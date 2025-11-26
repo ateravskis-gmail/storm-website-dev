@@ -21,7 +21,7 @@ export default function SaleBanner() {
               Black Friday • Nov. 24th - 30th Only
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-              Supercharge your SWPPP workflow &amp; save 50% on Storm Pro
+              Supercharge your SWPPP workflow &amp; save 50% on any Storm plan
             </h2>
             <p className="mt-3 text-white/80 text-lg">
               Use promo code{' '}
