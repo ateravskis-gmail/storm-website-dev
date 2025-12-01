@@ -158,21 +158,43 @@ export default function BlogPage() {
                     <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center text-storm-primary font-semibold group">
-                      Read more
-                      <svg
-                        className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                          <Image
+                            src="/1743179351400.jpeg"
+                            alt="Andrew Teravskis"
+                            width={40}
+                            height={40}
+                            className="w-full h-full object-cover"
+                            unoptimized
+                          />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-gray-900 text-sm">
+                            Andrew Teravskis
+                          </div>
+                          <div className="text-gray-500 text-xs">
+                            Founder and CEO, Storm
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-storm-primary font-semibold group">
+                        Read more
+                        <svg
+                          className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </Link>

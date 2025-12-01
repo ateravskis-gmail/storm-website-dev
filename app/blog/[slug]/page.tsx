@@ -32,15 +32,15 @@ function MappingPostContent({ images }: { images: string[] }) {
   const content = [
     {
       type: 'paragraph',
-      text: "I've been quietly working on something I've wanted for years—a modern, intuitive, actually-nice-to-use tool for creating SWPPP site maps. Not something built in GIS, and not something as overwhelming as CAD. I'm talking about a purpose-built mapping interface designed specifically for stormwater BMPs and SWPPP plans.",
+      text: "Storm has been quietly working on something I've wanted for years—a modern, intuitive, actually-nice-to-use tool for creating SWPPP site maps. Not something built in GIS, and not something as overwhelming as CAD. I'm talking about a purpose-built mapping interface designed specifically for stormwater BMPs and SWPPP plans.",
     },
     {
       type: 'paragraph',
-      text: "Today, I want to share a behind-the-scenes look at the prototype I've been building and why I think it will change how fast SWPPPs can be prepared.",
+      text: "Today, I get to share with you a behind-the-scenes look at a prototype mapping tool and tell you why I think it will change how fast SWPPPs can be prepared.",
     },
     {
       type: 'heading',
-      text: 'Why I Built This',
+      text: 'Why A New Mapping Tool is Needed',
     },
     {
       type: 'paragraph',
@@ -57,11 +57,11 @@ function MappingPostContent({ images }: { images: string[] }) {
     },
     {
       type: 'paragraph',
-      text: 'I kept asking myself: What would a purpose-built SWPPP mapping app look like if we started from scratch? A fast, modern, web-based tool that understands BMPs, layers, take-offs—out of the box.',
+      text: 'I kept asking myself: What would a purpose-built SWPPP mapping app look like if we started from scratch? A fast, modern, web-based tool that understands BMPs, layers, and take-offs, allout of the box.',
     },
     {
       type: 'paragraph',
-      text: 'So I started building it.',
+      text: 'So here we are.',
     },
     {
       type: 'heading',
@@ -95,11 +95,11 @@ function MappingPostContent({ images }: { images: string[] }) {
     },
     {
       type: 'paragraph',
-      text: "One of the things I've always hated about the status quo is how generic everything looks. A fiber roll is a yellow line. A silt fence is a dashed line. Nothing \"reads\" at a glance.",
+      text: "One of the things I've always been annoyed with is how generic everything looks. A fiber roll is a yellow line. A silt fence is a dashed line. Nothing is recognizable at a glance.",
     },
     {
       type: 'paragraph',
-      text: 'So I built new BMP line styles that are recognizable:',
+      text: 'So our BMP object styles are built to be recognizable:',
     },
     {
       type: 'list',
@@ -160,7 +160,7 @@ function MappingPostContent({ images }: { images: string[] }) {
     },
     {
       type: 'paragraph',
-      text: "I'm finishing the core drawing engine and integrating:",
+      text: "Finishing the core drawing engine, lots of testing, and integrating the following features:",
     },
     {
       type: 'list',
@@ -168,7 +168,7 @@ function MappingPostContent({ images }: { images: string[] }) {
         'layer management',
         'export to PDF (with proper scale)',
         'automatic map legend generation',
-        'integration into the SWPPP writing flow in Storm',
+        'integration into Storm, so BMPs specced on the map automatically appear in the BMPs narrative',
       ],
     },
     {
@@ -185,7 +185,7 @@ function MappingPostContent({ images }: { images: string[] }) {
     },
     {
       type: 'paragraph',
-      text: 'This prototype is my attempt to fix that.',
+      text: 'This prototype is an attempt to fix that.',
     },
     {
       type: 'paragraph',
@@ -193,7 +193,7 @@ function MappingPostContent({ images }: { images: string[] }) {
     },
     {
       type: 'paragraph',
-      text: "I'm excited to keep building it and can't wait to show the first official release - coming soon!",
+      text: "I can't wait to show the first official release - coming soon!",
     },
   ]
 
@@ -481,6 +481,30 @@ export default function BlogPost() {
                   </>
                 )
               )}
+
+              {/* Author Profile */}
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                    <Image
+                      src="/1743179351400.jpeg"
+                      alt="Andrew Teravskis"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                      unoptimized
+                    />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900 text-lg">
+                      Andrew Teravskis
+                    </div>
+                    <div className="text-gray-600 text-sm">
+                      Founder and CEO, Storm
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
