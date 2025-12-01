@@ -11,8 +11,14 @@ interface VideoModalProps {
 
 export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProps) {
   // Extract video ID from Vimeo URL
+  // Handles both formats: https://vimeo.com/1122303387 and https://vimeo.com/video/1122303387
   const getVideoId = (url: string) => {
-    const match = url.match(/\/video\/(\d+)/)
+    // Try /video/ format first
+    let match = url.match(/\/video\/(\d+)/)
+    if (match) return match[1]
+    
+    // Try direct vimeo.com/ID format
+    match = url.match(/vimeo\.com\/(\d+)/)
     return match ? match[1] : null
   }
 

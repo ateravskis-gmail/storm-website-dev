@@ -250,15 +250,15 @@ export default function Pricing() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mb-6 relative"
               >
-                <div className="relative rounded-2xl bg-gradient-to-r from-storm-primary/10 via-storm-secondary/10 to-storm-primary/10 p-4 border-2 border-dashed border-storm-primary/30">
+                <div className="relative rounded-2xl bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-cyan-500/10 p-4 border-2 border-dashed border-cyan-400/40">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex-1">
-                      <p className="text-xs uppercase tracking-wider text-gray-600 mb-1 font-semibold">
-                        Black Friday Promo
+                      <p className="text-xs uppercase tracking-wider text-purple-700 mb-1 font-semibold">
+                        Cyber Monday Promo
                       </p>
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-storm-primary to-storm-secondary bg-clip-text text-transparent tracking-wider">
-                          STORM50
+                        <span className="text-2xl font-bold bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent tracking-wider">
+                          CYBER50
                         </span>
                       </div>
                     </div>
@@ -275,9 +275,9 @@ export default function Pricing() {
                         className="relative"
                       >
                         {/* Glow effect */}
-                        <div className="absolute -inset-1 bg-gradient-to-br from-storm-primary to-storm-secondary rounded-xl blur opacity-60 animate-pulse" />
+                        <div className="absolute -inset-1 bg-gradient-to-br from-cyan-500 via-indigo-500 to-purple-600 rounded-xl blur opacity-60 animate-pulse" />
                         {/* Main badge */}
-                        <div className="relative px-4 py-3 rounded-xl bg-gradient-to-br from-storm-primary via-storm-primary to-storm-secondary flex flex-col items-center justify-center shadow-2xl border-2 border-white/20">
+                        <div className="relative px-4 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-600 to-purple-600 flex flex-col items-center justify-center shadow-2xl border-2 border-white/20">
                           {/* Inner shine */}
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/20 via-transparent to-transparent" />
                           <span className="text-white text-sm font-black leading-none tracking-tight relative z-10">50%</span>
@@ -287,7 +287,7 @@ export default function Pricing() {
                     </div>
                   </div>
                   {/* Shine effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </motion.div>
 
