@@ -6,6 +6,25 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+// Helper function to extract Vimeo video ID and get thumbnail URL
+const getVimeoThumbnail = (url: string | null): string | null => {
+  if (!url) return null
+  
+  // Try /video/ format first
+  let match = url.match(/\/video\/(\d+)/)
+  if (!match) {
+    // Try direct vimeo.com/ID format
+    match = url.match(/vimeo\.com\/(\d+)/)
+  }
+  
+  if (match && match[1]) {
+    // Use vumbnail.com service for Vimeo thumbnails
+    return `https://vumbnail.com/${match[1]}.jpg`
+  }
+  
+  return null
+}
+
 const blogPosts = [
   {
     slug: 'swppp-mapping-prototype',
@@ -65,21 +84,50 @@ export default function BlogPage() {
                 <Link href={`/blog/${post.slug}`}>
                   {/* Video Thumbnail or Image */}
                   {post.videoUrl ? (
-                    <div className="relative aspect-video bg-gradient-to-br from-storm-primary to-storm-secondary">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <svg
-                            className="w-10 h-10 text-white ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold">
-                        Watch Video
-                      </div>
+                    <div className="relative aspect-video bg-gradient-to-br from-storm-primary to-storm-secondary overflow-hidden">
+                      {getVimeoThumbnail(post.videoUrl) ? (
+                        <>
+                          <Image
+                            src={getVimeoThumbnail(post.videoUrl)!}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <svg
+                                className="w-10 h-10 text-white ml-1"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold">
+                            Watch Video
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <svg
+                                className="w-10 h-10 text-white ml-1"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold">
+                            Watch Video
+                          </div>
+                        </>
+                      )}
                     </div>
                   ) : (
                     <div className="relative aspect-video bg-gradient-to-br from-storm-primary/10 to-storm-secondary/10 overflow-hidden">

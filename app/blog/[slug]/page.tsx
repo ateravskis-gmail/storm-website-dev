@@ -9,6 +9,25 @@ import VideoModal from '@/components/VideoModal'
 import { useState } from 'react'
 import Link from 'next/link'
 
+// Helper function to extract Vimeo video ID and get thumbnail URL
+const getVimeoThumbnail = (url: string | null): string | null => {
+  if (!url) return null
+  
+  // Try /video/ format first
+  let match = url.match(/\/video\/(\d+)/)
+  if (!match) {
+    // Try direct vimeo.com/ID format
+    match = url.match(/vimeo\.com\/(\d+)/)
+  }
+  
+  if (match && match[1]) {
+    // Use vumbnail.com service for Vimeo thumbnails
+    return `https://vumbnail.com/${match[1]}.jpg`
+  }
+  
+  return null
+}
+
 function MappingPostContent({ images }: { images: string[] }) {
   const content = [
     {
@@ -362,25 +381,59 @@ export default function BlogPost() {
                 onClick={() => setIsVideoModalOpen(true)}
                 className="relative aspect-video bg-gradient-to-br from-storm-primary to-storm-secondary rounded-2xl overflow-hidden shadow-2xl cursor-pointer group hover:scale-[1.02] transition-transform"
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-white/30 transition-colors"
-                  >
-                    <svg
-                      className="w-12 h-12 text-white ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </motion.div>
-                </div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold inline-block">
-                    Click to watch featured video
-                  </div>
-                </div>
+                {getVimeoThumbnail(post.videoUrl) ? (
+                  <>
+                    <Image
+                      src={getVimeoThumbnail(post.videoUrl)!}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-white/30 transition-colors"
+                      >
+                        <svg
+                          className="w-12 h-12 text-white ml-1"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </motion.div>
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold inline-block">
+                        Click to watch featured video
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-white/30 transition-colors"
+                      >
+                        <svg
+                          className="w-12 h-12 text-white ml-1"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </motion.div>
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-semibold inline-block">
+                        Click to watch featured video
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </motion.div>
           ) : post.images && post.images.length > 0 ? (
