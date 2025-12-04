@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import VideoModal from './VideoModal'
 
+const userTypes = ['Civil Engineers', 'Stormwater Consultants', 'Contractors', 'Developers', 'Landowners']
+
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
@@ -12,8 +14,6 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
   const isInitialMount = useRef(true)
-
-  const userTypes = ['Civil Engineers', 'Stormwater Consultants', 'Contractors', 'Developers', 'Landowners']
 
   useEffect(() => {
     setMounted(true)

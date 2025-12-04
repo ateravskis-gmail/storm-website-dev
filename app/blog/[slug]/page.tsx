@@ -224,7 +224,7 @@ function CasqaTemplatePostContent() {
             if (text.includes('The quick answer is "no."')) {
               formattedText = (
                 <>
-                  <strong>The quick answer is "no."</strong>
+                  <strong>The quick answer is &quot;no.&quot;</strong>
                   {text.replace('The quick answer is "no."', '')}
                 </>
               )
@@ -250,7 +250,7 @@ function CasqaTemplatePostContent() {
         if (item.type === 'quote') {
           return (
             <blockquote key={index} className="border-l-4 border-storm-primary pl-6 py-2 my-6 italic text-gray-800 text-xl font-medium">
-              "{item.text}"
+              &quot;{item.text}&quot;
             </blockquote>
           )
         }
