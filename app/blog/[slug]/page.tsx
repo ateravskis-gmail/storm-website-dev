@@ -40,7 +40,7 @@ function CasqaTemplatePostContent() {
     },
     {
       type: 'paragraph',
-      text: 'The quick answer is "no." The reasons why are numerous and nuanced, and we\'re also exploring how we might be able to answer the question differently in the future. However, I\'d like to ask one question in response:',
+      text: 'The quick answer is "no." The reasons why are numerous and nuanced, and we\'re also exploring how we might be able to answer the question differently in the future (on a related note, we do offer custom template creation for California and other states!). However, I\'d like to ask one question in response:',
       formatted: true,
     },
     {
