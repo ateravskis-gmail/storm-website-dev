@@ -28,6 +28,265 @@ const getVimeoThumbnail = (url: string | null): string | null => {
   return null
 }
 
+function CasqaTemplatePostContent() {
+  const content = [
+    {
+      type: 'paragraph',
+      text: "I've been asked several times, even in the last week:",
+    },
+    {
+      type: 'quote',
+      text: 'Does Storm offer the CASQA SWPPP template?',
+    },
+    {
+      type: 'paragraph',
+      text: 'The quick answer is "no." The reasons why are numerous and nuanced, and we\'re also exploring how we might be able to answer the question differently in the future. However, I\'d like to ask one question in response:',
+      formatted: true,
+    },
+    {
+      type: 'quote',
+      text: 'Is the CASQA SWPPP template the best fit for your project?',
+    },
+    {
+      type: 'paragraph',
+      text: "It's a fair question. After all, CASQA has played a foundational role in elevating stormwater practice in California, and its Construction General Permit (CGP) template and BMP cutsheets are widely trusted. Many people start with it simply because it's the familiar gold standard.",
+    },
+    {
+      type: 'paragraph',
+      text: "But, it's worth stepping back and asking: Is the CASQA template always the best fit for the job?",
+      formatted: true,
+    },
+    {
+      type: 'paragraph',
+      text: "Below are a few practical considerations that might help you decide—shared with full respect for CASQA's contributions, but also with a candid look at why Storm partnered with WGR to utilize the Connections Course template.",
+    },
+    {
+      type: 'heading',
+      text: '1. The CASQA Template\'s Strength Is Also Its Weakness: Size',
+    },
+    {
+      type: 'paragraph',
+      text: 'The CASQA SWPPP template is impressively comprehensive. It contains a wealth of reference material, detailed descriptions, and background information.',
+    },
+    {
+      type: 'paragraph',
+      text: 'However, that thoroughness comes with a tradeoff:',
+    },
+    {
+      type: 'list',
+      items: [
+        'The document often exceeds 700 pages,',
+        'And a large portion of that content is reference material rather than project-specific guidance.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'For many stormwater professionals, this raises a usability challenge. A SWPPP is supposed to be a practical, working document—something that inspectors, contractors, and site staff can actually use in the field. When a SWPPP becomes hundreds of pages long, it risks becoming unreadable, especially for the people who need the information most.',
+    },
+    {
+      type: 'paragraph',
+      text: 'This is not a criticism of CASQA; their template is thorough by design. But it does mean that for many projects, a more streamlined, focused template may better serve the actual users.',
+    },
+    {
+      type: 'heading',
+      text: '2. BMP Cut Sheets Can Lead to Ambiguity',
+    },
+    {
+      type: 'paragraph',
+      text: 'Another commonly discussed issue is the granularity of the BMP cut sheets, which can allow some QSDs (other people, not you of course) to meet the job requirements without actually speccing anything useful.',
+    },
+    {
+      type: 'paragraph',
+      text: 'For example, when creating SWPPP map, the QSD might specify:',
+    },
+    {
+      type: 'quote',
+      text: 'EC-4 Hydroseeding',
+    },
+    {
+      type: 'paragraph',
+      text: 'On paper, this seems sufficient. But in practice, EC-4 encompasses a large variety of possible materials, formulations, and performance. A cheap cellulose blend applied millimeters thick with poor coverage and a cutting-edge hydromulch blend costing $10,000 per acre both meet the requirements of EC-4.',
+    },
+    {
+      type: 'paragraph',
+      text: "It's a bit like a drawing that simply says:",
+    },
+    {
+      type: 'quote',
+      text: 'Install pavement.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Without clarifying asphalt vs. concrete, thickness, binder grade, application method, and so on, the specification becomes too open-ended to be actually usable.',
+    },
+    {
+      type: 'paragraph',
+      text: 'A generic label can unintentionally obscure what the project truly requires. Again, this isn\'t a flaw in CASQA\'s work; it\'s simply an inherent challenge when a single standardized cut sheet tries to serve every possible project in California.',
+    },
+    {
+      type: 'heading',
+      text: '3. Is the CASQA Template Required? In Most Cases: No',
+    },
+    {
+      type: 'paragraph',
+      text: 'A common misconception is that the Construction General Permit, local municipal ordinances, or other regulators mandate the use of the CASQA SWPPP template.',
+    },
+    {
+      type: 'paragraph',
+      text: 'But in most cases, the regulations say something to the following effect:',
+    },
+    {
+      type: 'quote',
+      text: 'CASQA… or equivalent.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Meaning: as long as a template meets all CGP requirements and is equivalent to the CASQA SWPPP and/or cut sheets, it is acceptable.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Storm uses the Connections Course SWPPP template, which is designed to meet the full CGP requirements in a more streamlined, readable format. It\'s compliant, equivalent to CASQA, and was written to be immediately understandable and applicable for the end user.',
+    },
+    {
+      type: 'paragraph',
+      text: 'And we believe that last point especially is important, because:',
+    },
+    {
+      type: 'heading',
+      text: '4. A SWPPP Should Be Readable—Or It\'s Not Doing Its Job',
+    },
+    {
+      type: 'paragraph',
+      text: 'At Storm, we believe a SWPPP is only as good as it is understandable. If the contractor, inspector, or superintendent can\'t easily understand it, they\'re less likely to follow it.',
+    },
+    {
+      type: 'paragraph',
+      text: 'A SWPPP should:',
+    },
+    {
+      type: 'list',
+      items: [
+        'Be clear and project-specific',
+        'Describe what needs to happen in the field',
+        'Make essential information easily accessible',
+        'Be compliant with all CGP regulations',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'There\'s a certain gravitas to printing and delivering a 700-page bound document. It looks important. It feels thorough. But the next time you\'re assembling one of those tomes, consider two questions:',
+    },
+    {
+      type: 'numberedList',
+      items: [
+        'How many of those pages reflect your actual, site-specific professional judgment as the QSD?',
+        'How many of those pages will the end user—the person in the field—realistically read?',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: "Those answers often tell you more about a SWPPP's value than its page count.",
+    },
+    {
+      type: 'heading',
+      text: 'Final Thought',
+    },
+    {
+      type: 'paragraph',
+      text: 'CASQA\'s contributions to the industry are enormous, and their template remains the respected gold standard. But that fact doesn\'t automatically make it the ideal template for every project. Stormwater professionals should feel confident choosing a SWPPP format that actually serves their projects.',
+    },
+    {
+      type: 'paragraph',
+      text: 'If a template is compliant, equivalent to the CASQA standard, readable, and easier for people to implement—that\'s more than just acceptable.',
+    },
+    {
+      type: 'paragraph',
+      text: 'That\'s good stormwater practice.',
+    },
+    {
+      type: 'paragraph',
+      text: 'If you\'re curious how Storm structures SWPPPs—or want to see how a digital, guided approach can streamline the entire process—download our example SWPPP today, or reach out to me for a tour.',
+    },
+  ]
+
+  return (
+    <>
+      {content.map((item, index) => {
+        if (item.type === 'paragraph') {
+          const text = item.text
+          if (!text) return null
+          
+          let formattedText: React.ReactNode = text
+          
+          // Apply formatting if needed
+          if ((item as any).formatted) {
+            // Make "The quick answer is "no."" bold
+            if (text.includes('The quick answer is "no."')) {
+              formattedText = (
+                <>
+                  <strong>The quick answer is "no."</strong>
+                  {text.replace('The quick answer is "no."', '')}
+                </>
+              )
+            }
+            // Make "Is the CASQA template always the best fit for the job?" italic
+            if (text.includes('Is the CASQA template always the best fit for the job?')) {
+              formattedText = (
+                <>
+                  {text.split('Is the CASQA template always the best fit for the job?')[0]}
+                  <em>Is the CASQA template always the best fit for the job?</em>
+                  {text.split('Is the CASQA template always the best fit for the job?')[1]}
+                </>
+              )
+            }
+          }
+          
+          return (
+            <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
+              {formattedText}
+            </p>
+          )
+        }
+        if (item.type === 'quote') {
+          return (
+            <blockquote key={index} className="border-l-4 border-storm-primary pl-6 py-2 my-6 italic text-gray-800 text-xl font-medium">
+              "{item.text}"
+            </blockquote>
+          )
+        }
+        if (item.type === 'heading') {
+          return (
+            <h2 key={index} className="text-3xl font-bold text-gray-900 mt-12 mb-6 first:mt-0">
+              {item.text}
+            </h2>
+          )
+        }
+        if (item.type === 'list' && item.items) {
+          return (
+            <ul key={index} className="list-disc list-inside mb-6 space-y-2 text-gray-700 text-lg ml-4">
+              {item.items.map((listItem, listIndex) => (
+                <li key={listIndex} className="leading-relaxed">{listItem}</li>
+              ))}
+            </ul>
+          )
+        }
+        if (item.type === 'numberedList' && item.items) {
+          return (
+            <ol key={index} className="list-decimal list-inside mb-6 space-y-2 text-gray-700 text-lg ml-4">
+              {item.items.map((listItem, listIndex) => (
+                <li key={listIndex} className="leading-relaxed">
+                  <strong>{listItem}</strong>
+                </li>
+              ))}
+            </ol>
+          )
+        }
+        return null
+      })}
+    </>
+  )
+}
+
 function MappingPostContent({ images }: { images: string[] }) {
   const content = [
     {
@@ -256,6 +515,15 @@ const blogPosts: Record<string, {
   date: string
   images?: string[]
 }> = {
+  'casqa-swppp-template-gold-standard': {
+    title: 'Thoughts on the "Gold Standard" of SWPPP templates',
+    videoUrl: null,
+    date: '2025',
+    images: [
+      '/70 pages and 700 pages.png',
+    ],
+    content: 'casqa-template-content',
+  },
   'swppp-mapping-prototype': {
     title: 'Building the Future of SWPPP Mapping: A First Look at The New Prototype',
     videoUrl: null,
@@ -321,6 +589,7 @@ export default function BlogPost() {
 
   // Handle special content for SWPPP mapping prototype
   const isMappingPost = slug === 'swppp-mapping-prototype'
+  const isCasqaPost = slug === 'casqa-swppp-template-gold-standard'
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-storm-light via-white to-storm-light">
@@ -467,6 +736,8 @@ export default function BlogPost() {
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
               {isMappingPost ? (
                 <MappingPostContent images={post.images || []} />
+              ) : isCasqaPost ? (
+                <CasqaTemplatePostContent />
               ) : (
                 typeof post.content === 'string' && (
                   <>

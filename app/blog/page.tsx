@@ -27,6 +27,13 @@ const getVimeoThumbnail = (url: string | null): string | null => {
 
 const blogPosts = [
   {
+    slug: 'casqa-swppp-template-gold-standard',
+    title: 'Thoughts on the "Gold Standard" of SWPPP templates',
+    excerpt: 'A practical perspective on the CASQA CGP SWPPP template for QSDs and stormwater professionals',
+    videoUrl: null,
+    date: '2025',
+  },
+  {
     slug: 'swppp-mapping-prototype',
     title: 'Building the Future of SWPPP Mapping: A First Look at The New Prototype',
     excerpt: 'I\'ve been quietly working on something I\'ve wanted for years—a modern, intuitive, actually-nice-to-use tool for creating SWPPP site maps.',
