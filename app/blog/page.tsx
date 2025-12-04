@@ -146,6 +146,14 @@ export default function BlogPage() {
                           className="object-cover"
                           unoptimized
                         />
+                      ) : post.slug === 'casqa-swppp-template-gold-standard' ? (
+                        <Image
+                          src="/70 pages and 700 pages.png"
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-storm-primary text-4xl font-bold opacity-20">
