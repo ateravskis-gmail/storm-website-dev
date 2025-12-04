@@ -2,8 +2,40 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function SaleBanner() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  })
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const endDate = new Date('2025-12-05T23:59:59')
+      const now = new Date()
+      const difference = endDate.getTime() - now.getTime()
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        })
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      }
+    }
+
+    calculateTimeLeft()
+    const timer = setInterval(calculateTimeLeft, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white pt-32 pb-10">
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-purple-950 to-indigo-950 opacity-95" />
@@ -16,6 +48,7 @@ export default function SaleBanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="flex-1"
           >
             <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/90 mb-2">
               Cyber Monday • Dec. 1st - 5th Only
@@ -37,7 +70,60 @@ export default function SaleBanner() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col items-center lg:items-end gap-4"
           >
+            {/* Countdown Timer */}
+            <div className="text-center lg:text-right">
+              <motion.p
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-sm uppercase tracking-wider text-red-400 mb-3 font-bold"
+              >
+                ⚠️ Sale Ends In
+              </motion.p>
+              <div className="flex gap-2 lg:gap-3">
+                {[
+                  { value: timeLeft.days, label: 'Days' },
+                  { value: timeLeft.hours, label: 'Hours' },
+                  { value: timeLeft.minutes, label: 'Minutes' },
+                  { value: timeLeft.seconds, label: 'Seconds' },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      boxShadow: [
+                        '0 0 0px rgba(239, 68, 68, 0)',
+                        '0 0 20px rgba(239, 68, 68, 0.6)',
+                        '0 0 0px rgba(239, 68, 68, 0)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.1,
+                    }}
+                    className="relative flex flex-col items-center bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-md rounded-xl px-4 py-3 border-2 border-red-400/60 min-w-[70px]"
+                  >
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-red-500/30 to-orange-500/30 opacity-0 animate-pulse" />
+                    <span className="relative text-3xl font-bold text-white tabular-nums drop-shadow-lg">
+                      {String(item.value).padStart(2, '0')}
+                    </span>
+                    <span className="relative text-xs text-red-200 uppercase tracking-wider mt-1 font-semibold">
+                      {item.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
             <Link
               href="https://app.getstorm.io"
               target="_blank"

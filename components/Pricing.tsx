@@ -33,7 +33,7 @@ const sharedBenefits: FeatureItem[] = [
 
 const moneyBackFeature: FeatureItem = {
   key: 'guarantee',
-  content: '14-day money-back guarantee',
+  content: 'Try free for 7 days',
 }
 
 const buildFeatures = (base: FeatureItem[]): FeatureItem[] => [
