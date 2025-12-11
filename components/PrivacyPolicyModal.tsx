@@ -95,7 +95,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
               <div className="flex-1 overflow-y-auto px-6 md:px-8 py-6 md:py-8">
                 <div className="prose prose-sm md:prose-base max-w-none">
                   <p className="text-gray-700 mb-6">
-                    GetStorm.io ("Storm," "we," "our," or "us") provides software tools that help engineers, consultants, contractors, and organizations streamline SWPPP writing workflows, generate compliance documents, and manage project documentation. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use Storm.io and related services (the "Service").
+                    GetStorm.io (&quot;Storm,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) provides software tools that help engineers, consultants, contractors, and organizations streamline SWPPP writing workflows, generate compliance documents, and manage project documentation. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use Storm.io and related services (the &quot;Service&quot;).
                   </p>
                   <p className="text-gray-700 mb-8">
                     If you do not agree with any part of this Privacy Policy, please discontinue use of the Service.
@@ -202,7 +202,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">9. Changes to This Policy</h3>
                   <p className="text-gray-700 mb-6">
-                    We may update this Privacy Policy periodically. The "Last Updated" date reflects the current version. Changes become effective upon posting to the website.
+                    We may update this Privacy Policy periodically. The &quot;Last Updated&quot; date reflects the current version. Changes become effective upon posting to the website.
                   </p>
                 </div>
               </div>

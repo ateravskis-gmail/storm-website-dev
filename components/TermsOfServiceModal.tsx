@@ -95,7 +95,7 @@ export default function TermsOfServiceModal({ isOpen, onClose }: TermsOfServiceM
               <div className="flex-1 overflow-y-auto px-6 md:px-8 py-6 md:py-8">
                 <div className="prose prose-sm md:prose-base max-w-none">
                   <p className="text-gray-700 mb-6">
-                    These Terms of Service ("Terms") govern your access to and use of GetStorm.io ("Storm," "we," "our," "us") and all related products and services (the "Service"). By using the Service, you agree to these Terms.
+                    These Terms of Service (&quot;Terms&quot;) govern your access to and use of GetStorm.io (&quot;Storm,&quot; &quot;we,&quot; &quot;our,&quot; &quot;us&quot;) and all related products and services (the &quot;Service&quot;). By using the Service, you agree to these Terms.
                   </p>
                   <p className="text-gray-700 mb-8">
                     If you do not agree, do not use the Service.
@@ -190,7 +190,7 @@ export default function TermsOfServiceModal({ isOpen, onClose }: TermsOfServiceM
                   
                   <h4 className="text-base font-semibold text-gray-900 mt-6 mb-3">5.1 Your Content</h4>
                   <p className="text-gray-700 mb-6">
-                    You retain ownership of all SWPPP data, project information, files, and materials you upload ("User Content"). You grant Storm a limited license to host, store, process, display, and transmit User Content solely to operate and improve the Service.
+                    You retain ownership of all SWPPP data, project information, files, and materials you upload (&quot;User Content&quot;). You grant Storm a limited license to host, store, process, display, and transmit User Content solely to operate and improve the Service.
                   </p>
 
                   <h4 className="text-base font-semibold text-gray-900 mt-6 mb-3">5.2 Our Content</h4>
@@ -221,7 +221,7 @@ export default function TermsOfServiceModal({ isOpen, onClose }: TermsOfServiceM
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">9. Disclaimers</h3>
                   <p className="text-gray-700 mb-6">
-                    The Service is provided "as is" and "as available" without warranties of any kind, express or implied, including fitness for a particular purpose, non-infringement, accuracy, reliability, or availability. Use of the Service is at your own risk.
+                    The Service is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, express or implied, including fitness for a particular purpose, non-infringement, accuracy, reliability, or availability. Use of the Service is at your own risk.
                   </p>
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">10. Limitation of Liability</h3>
