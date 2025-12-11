@@ -149,7 +149,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
                   <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                     <li><strong>Service providers:</strong> hosting platforms, analytics tools, cloud storage, email delivery services, payment processors</li>
                     <li><strong>Your organization/account owner:</strong> if you are added to an organizational account</li>
-                    <li><strong>Legal authorities:</strong> when required by law or to protect Storm's rights, security, and users</li>
+                    <li><strong>Legal authorities:</strong> when required by law or to protect Storm&apos;s rights, security, and users</li>
                     <li><strong>Business transfers:</strong> in the event of a merger, acquisition, or asset sale</li>
                   </ul>
                   <p className="text-gray-700 mb-6 font-semibold">
@@ -178,7 +178,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
                     You may request deletion of your data at any time (see Section 8).
                   </p>
 
-                  <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">6. Children's Privacy</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">6. Children&apos;s Privacy</h3>
                   <p className="text-gray-700 mb-6">
                     Storm is not designed for individuals under 16, and we do not knowingly collect data from minors. If we learn that we have collected data from a minor, we will delete it promptly.
                   </p>

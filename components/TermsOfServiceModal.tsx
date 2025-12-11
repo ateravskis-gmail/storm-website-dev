@@ -226,12 +226,12 @@ export default function TermsOfServiceModal({ isOpen, onClose }: TermsOfServiceM
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">10. Limitation of Liability</h3>
                   <p className="text-gray-700 mb-6">
-                    To the maximum extent permitted by law, Storm is not liable for indirect, incidental, consequential, special, or punitive damages. Storm's total liability to you for any claim will not exceed the amount paid by you in the 12 months preceding the event giving rise to the claim.
+                    To the maximum extent permitted by law, Storm is not liable for indirect, incidental, consequential, special, or punitive damages. Storm&apos;s total liability to you for any claim will not exceed the amount paid by you in the 12 months preceding the event giving rise to the claim.
                   </p>
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">11. Indemnification</h3>
                   <p className="text-gray-700 mb-6">
-                    You agree to indemnify and hold Storm harmless from any claims, damages, losses, liabilities, and expenses (including attorneys' fees) arising out of your use or misuse of the Service, your violation of these Terms, or your User Content.
+                    You agree to indemnify and hold Storm harmless from any claims, damages, losses, liabilities, and expenses (including attorneys&apos; fees) arising out of your use or misuse of the Service, your violation of these Terms, or your User Content.
                   </p>
 
                   <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">12. Governing Law</h3>
