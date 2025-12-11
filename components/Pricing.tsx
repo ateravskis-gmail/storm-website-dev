@@ -70,8 +70,6 @@ const pricingPlans: Record<
     billingNote?: string
     originalPrice?: string
     savingsCopy?: string
-    promoPrice?: string
-    promoSavings?: string
   }>
 > = {
   monthly: [
@@ -79,8 +77,6 @@ const pricingPlans: Record<
       name: 'Express',
       price: '$74.99',
       cadence: '/month',
-      promoPrice: '$37.50',
-      promoSavings: '$37.49',
       description: 'Perfect for getting started',
       features: expressFeatures,
     },
@@ -88,8 +84,6 @@ const pricingPlans: Record<
       name: 'Pro',
       price: '$199.99',
       cadence: '/month',
-      promoPrice: '$100.00',
-      promoSavings: '$99.99',
       description: 'For professionals and small teams',
       features: proFeatures,
       highlight: true,
@@ -98,8 +92,6 @@ const pricingPlans: Record<
       name: 'Business',
       price: '$999',
       cadence: '/month',
-      promoPrice: '$499.50',
-      promoSavings: '$499.50',
       description: 'For growing businesses and teams',
       features: businessFeatures,
     },
@@ -112,8 +104,6 @@ const pricingPlans: Record<
       billingNote: 'billed annually',
       originalPrice: '$599.88',
       savingsCopy: 'Save $149.88',
-      promoPrice: '$24.99',
-      promoSavings: '$24.99',
       description: 'Perfect for getting started',
       features: expressFeatures,
       badge: '25% OFF',
@@ -125,8 +115,6 @@ const pricingPlans: Record<
       billingNote: 'billed annually',
       originalPrice: '$1,559.88',
       savingsCopy: 'Save $660',
-      promoPrice: '$64.99',
-      promoSavings: '$64.99',
       description: 'For professionals and small teams',
       features: proFeatures,
       badge: '42.3% OFF',
@@ -139,8 +127,6 @@ const pricingPlans: Record<
       billingNote: 'billed annually',
       originalPrice: '$5,399.88',
       savingsCopy: 'Save $3,000',
-      promoPrice: '$224.99',
-      promoSavings: '$224.99',
       description: 'For growing businesses and teams',
       features: businessFeatures,
       badge: '55.6% OFF',
@@ -213,83 +199,14 @@ export default function Pricing() {
               </div>
 
               <div className="mb-6">
-                {plan.promoPrice ? (
-                  <>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-gray-900">{plan.promoPrice}</span>
-                      <span className="text-gray-500">{plan.cadence}</span>
-                    </div>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        <span className="line-through mr-2">{plan.price}</span>
-                        <span className="text-emerald-600 font-semibold">Save {plan.promoSavings}/month</span>
-                      </p>
-                    </div>
-                    {plan.billingNote && (
-                      <p className="text-sm text-gray-500 mt-1">{plan.billingNote}</p>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                      <span className="text-gray-500">{plan.cadence}</span>
-                    </div>
-                    {plan.billingNote && (
-                      <p className="text-sm text-gray-500 mt-1">{plan.billingNote}</p>
-                    )}
-                  </>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                  <span className="text-gray-500">{plan.cadence}</span>
+                </div>
+                {plan.billingNote && (
+                  <p className="text-sm text-gray-500 mt-1">{plan.billingNote}</p>
                 )}
               </div>
-
-              {/* Promo Code Display */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mb-6 relative"
-              >
-                <div className="relative rounded-2xl bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-cyan-500/10 p-4 border-2 border-dashed border-cyan-400/40">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex-1">
-                      <p className="text-xs uppercase tracking-wider text-purple-700 mb-1 font-semibold">
-                        Cyber Monday Promo
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent tracking-wider">
-                          CYBER50
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <motion.div
-                        animate={{ 
-                          scale: [1, 1.05, 1],
-                        }}
-                        transition={{ 
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                        className="relative"
-                      >
-                        {/* Glow effect */}
-                        <div className="absolute -inset-1 bg-gradient-to-br from-cyan-500 via-indigo-500 to-purple-600 rounded-xl blur opacity-60 animate-pulse" />
-                        {/* Main badge */}
-                        <div className="relative px-4 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-600 to-purple-600 flex flex-col items-center justify-center shadow-2xl border-2 border-white/20">
-                          {/* Inner shine */}
-                          <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/20 via-transparent to-transparent" />
-                          <span className="text-white text-sm font-black leading-none tracking-tight relative z-10">50%</span>
-                          <span className="text-white text-[10px] font-extrabold leading-none tracking-widest uppercase relative z-10 mt-0.5">OFF</span>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-                </div>
-              </motion.div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (

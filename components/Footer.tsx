@@ -1,9 +1,14 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import TermsOfServiceModal from './TermsOfServiceModal'
+import PrivacyPolicyModal from './PrivacyPolicyModal'
 
 export default function Footer() {
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false)
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false)
   return (
     <footer className="bg-storm-dark text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,8 +47,22 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
+              <li>
+                <button 
+                  onClick={() => setIsPrivacyModalOpen(true)}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => setIsTermsModalOpen(true)}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Terms of Service
+                </button>
+              </li>
               <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
             </ul>
           </div>
@@ -62,6 +81,14 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <TermsOfServiceModal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+      />
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
     </footer>
   )
 }

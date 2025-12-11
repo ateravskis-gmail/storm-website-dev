@@ -11,13 +11,13 @@ import Pricing from '@/components/Pricing'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import SaleBanner from '@/components/SaleBanner'
+// import SaleBanner from '@/components/SaleBanner'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <SaleBanner />
+      {/* <SaleBanner /> */}
       <Hero />
       <ExamplePDF />
       <Features />
