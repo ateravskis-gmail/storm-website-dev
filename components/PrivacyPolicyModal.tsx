@@ -88,7 +88,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
                   Privacy Policy — Storm
                 </h2>
-                <p className="text-sm text-gray-500">Last Updated: November 2025</p>
+                <p className="text-sm text-gray-500">Last Updated: December 11, 2025</p>
               </div>
 
               {/* Scrollable Content */}
@@ -223,3 +223,5 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
     </AnimatePresence>
   )
 }
+
+
