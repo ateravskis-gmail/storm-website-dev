@@ -35,6 +35,12 @@ export default function CTA() {
     return () => window.removeEventListener('keydown', handleEscape)
   }, [isModalOpen])
 
+  useEffect(() => {
+    const handleOpenCalendly = () => setIsModalOpen(true)
+    window.addEventListener('open-calendly-modal', handleOpenCalendly)
+    return () => window.removeEventListener('open-calendly-modal', handleOpenCalendly)
+  }, [])
+
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -83,7 +89,7 @@ export default function CTA() {
             </motion.button>
           </div>
           <p className="text-white/70 mt-6 text-sm">
-            ✓ 14-day money back guarantee     ✓ Cancel anytime
+            ✓ 7-day free trial     ✓ Cancel anytime
           </p>
         </motion.div>
       </div>

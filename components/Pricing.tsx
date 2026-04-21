@@ -75,14 +75,14 @@ const pricingPlans: Record<
   monthly: [
     {
       name: 'Express',
-      price: '$74.99',
+      price: '$19',
       cadence: '/month',
       description: 'Perfect for getting started',
       features: expressFeatures,
     },
     {
       name: 'Pro',
-      price: '$199.99',
+      price: '$59',
       cadence: '/month',
       description: 'For professionals and small teams',
       features: proFeatures,
@@ -90,7 +90,7 @@ const pricingPlans: Record<
     },
     {
       name: 'Business',
-      price: '$999',
+      price: '$199',
       cadence: '/month',
       description: 'For growing businesses and teams',
       features: businessFeatures,
@@ -99,7 +99,7 @@ const pricingPlans: Record<
   annual: [
     {
       name: 'Express',
-      price: '$49.99',
+      price: '$15',
       cadence: '/month',
       billingNote: 'billed annually',
       originalPrice: '$599.88',
@@ -110,7 +110,7 @@ const pricingPlans: Record<
     },
     {
       name: 'Pro',
-      price: '$129.99',
+      price: '$49',
       cadence: '/month',
       billingNote: 'billed annually',
       originalPrice: '$1,559.88',
@@ -122,7 +122,7 @@ const pricingPlans: Record<
     },
     {
       name: 'Business',
-      price: '$449.99',
+      price: '$149',
       cadence: '/month',
       billingNote: 'billed annually',
       originalPrice: '$5,399.88',
@@ -135,7 +135,7 @@ const pricingPlans: Record<
 }
 
 export default function Pricing() {
-  const [billingCycle, setBillingCycle] = useState<BillingCycle>('annual')
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly')
   const plans = pricingPlans[billingCycle]
 
   return (
@@ -146,10 +146,10 @@ export default function Pricing() {
             Flexible Pricing
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Choose the plan that fits your workflow
+            Get Started for $19
           </h2>
           <p className="text-lg text-gray-600">
-            Lock in serious savings with annual plans.
+            Even less with annual plans.
           </p>
         </div>
 
