@@ -47,10 +47,11 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className={`${linkColor} transition-colors`}>Features</a>
-              <a href="#how-it-works" className={`${linkColor} transition-colors`}>How It Works</a>
-              <a href="#testimonials" className={`${linkColor} transition-colors`}>Testimonials</a>
-              <a href="#pricing" className={`${linkColor} transition-colors`}>Pricing</a>
+              <a href="/#features" className={`${linkColor} transition-colors`}>Features</a>
+              <a href="/#how-it-works" className={`${linkColor} transition-colors`}>How It Works</a>
+              <a href="/#testimonials" className={`${linkColor} transition-colors`}>Testimonials</a>
+              <a href="/#pricing" className={`${linkColor} transition-colors`}>Pricing</a>
+              <Link href="/blog" className={`${linkColor} transition-colors`}>Blog</Link>
               <a 
                 href="https://app.getstorm.io"
                 target="_blank"
@@ -105,18 +106,21 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className={`${linkColor} transition-colors`}>
+            <a href="/#features" className={`${linkColor} transition-colors`}>
               Features
             </a>
-            <a href="#how-it-works" className={`${linkColor} transition-colors`}>
+            <a href="/#how-it-works" className={`${linkColor} transition-colors`}>
               How It Works
             </a>
-            <a href="#testimonials" className={`${linkColor} transition-colors`}>
+            <a href="/#testimonials" className={`${linkColor} transition-colors`}>
               Testimonials
             </a>
-            <a href="#pricing" className={`${linkColor} transition-colors`}>
+            <a href="/#pricing" className={`${linkColor} transition-colors`}>
               Pricing
             </a>
+            <Link href="/blog" className={`${linkColor} transition-colors`}>
+              Blog
+            </Link>
             <motion.a
               href="https://app.getstorm.io"
               target="_blank"
@@ -155,10 +159,11 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
             className="md:hidden bg-white border-t"
           >
             <div className="px-4 py-4 space-y-4">
-              <a href="#features" className="block text-gray-700 hover:text-storm-primary">Features</a>
-              <a href="#how-it-works" className="block text-gray-700 hover:text-storm-primary">How It Works</a>
-              <a href="#testimonials" className="block text-gray-700 hover:text-storm-primary">Testimonials</a>
-              <a href="#pricing" className="block text-gray-700 hover:text-storm-primary">Pricing</a>
+              <a href="/#features" className="block text-gray-700 hover:text-storm-primary">Features</a>
+              <a href="/#how-it-works" className="block text-gray-700 hover:text-storm-primary">How It Works</a>
+              <a href="/#testimonials" className="block text-gray-700 hover:text-storm-primary">Testimonials</a>
+              <a href="/#pricing" className="block text-gray-700 hover:text-storm-primary">Pricing</a>
+              <Link href="/blog" className="block text-gray-700 hover:text-storm-primary">Blog</Link>
               <a 
                 href="https://app.getstorm.io"
                 target="_blank"

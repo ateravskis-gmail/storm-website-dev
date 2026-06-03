@@ -13,7 +13,7 @@ export default function ExamplePDF() {
   }, [])
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+    <section id="example-pdf" className="py-24 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,rgb(0,0,0)_1px,transparent_0)] [background-size:24px_24px]" />
       

@@ -16,6 +16,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/how-it-works',
+        destination: '/#how-it-works',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

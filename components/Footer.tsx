@@ -36,16 +36,16 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Product</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-              <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
+              <li><a href="/#features" className="hover:text-white transition-colors">Features</a></li>
+              <li><a href="/#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
+              <li><a href="/#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="/#pricing" className="hover:text-white transition-colors">Pricing</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#team" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="/#team" className="hover:text-white transition-colors">About</a></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               <li>
                 <button

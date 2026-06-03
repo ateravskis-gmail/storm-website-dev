@@ -47,7 +47,7 @@ export default function CTA() {
       <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt="Storm water"
+          alt="Stormwater runoff landscape used as background for Storm SWPPP software call to action"
           fill
           className="object-cover"
         />
