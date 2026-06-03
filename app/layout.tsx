@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   robots: isProductionSite()
     ? { index: true, follow: true }
     : { index: false, follow: false },
+  verification: {
+    google: 'CtbKpFkRla1e9XkFtGaREny2KzF04hwxXtp6GluzGL0',
+  },
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
