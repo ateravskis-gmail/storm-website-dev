@@ -14,6 +14,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'getweekly.io',
+        port: '',
+        pathname: '/images/**',
+      },
     ],
   },
   async redirects() {

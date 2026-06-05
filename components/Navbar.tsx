@@ -11,6 +11,7 @@ interface NavbarProps {
 
 export default function Navbar({ forceScrolled = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
+  const [bannerVisible, setBannerVisible] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -19,13 +20,33 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (!mounted) return
+
+    const banner = document.getElementById('weekly-banner')
+    if (!banner) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setBannerVisible(entry.isIntersecting),
+      { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
+    )
+
+    observer.observe(banner)
+    return () => observer.disconnect()
+  }, [mounted])
+
   const isScrolled = forceScrolled || scrolled
-  const linkColor = 'text-gray-700 hover:text-storm-primary'
-  const logoSrc = '/storm-logo.png'
+  const useLightNav = bannerVisible && !isScrolled
+  const linkColor = useLightNav
+    ? 'text-white/90 hover:text-storm-secondary'
+    : 'text-gray-700 hover:text-storm-primary'
+  const logoSrc = useLightNav ? '/storm-logo-white.png' : '/storm-logo.png'
+  const mobileMenuBtnColor = useLightNav ? 'text-white' : 'text-gray-700'
 
   if (!mounted) {
     return (
@@ -61,7 +82,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
                 Get Started
               </a>
             </div>
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 text-gray-700">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={`md:hidden p-2 ${mobileMenuBtnColor}`}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -136,7 +157,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700"
+            className={`md:hidden p-2 ${mobileMenuBtnColor}`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
