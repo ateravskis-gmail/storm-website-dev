@@ -107,7 +107,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-gradient-storm text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow text-center"
                 >
-                  Start Free Trial
+                  Get Started
                 </a>
                 <button 
                   onClick={() => setIsVideoModalOpen(true)}

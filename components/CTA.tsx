@@ -89,7 +89,7 @@ export default function CTA() {
             </motion.button>
           </div>
           <p className="text-white/70 mt-6 text-sm">
-            ✓ 7-day free trial     ✓ Cancel anytime
+            ✓ Cancel anytime
           </p>
         </motion.div>
       </div>

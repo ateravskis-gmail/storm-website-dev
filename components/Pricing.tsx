@@ -31,15 +31,9 @@ const sharedBenefits: FeatureItem[] = [
   },
 ]
 
-const moneyBackFeature: FeatureItem = {
-  key: 'guarantee',
-  content: 'Try free for 7 days',
-}
-
 const buildFeatures = (base: FeatureItem[]): FeatureItem[] => [
   ...base,
   ...sharedBenefits,
-  moneyBackFeature,
 ]
 
 const expressFeatures = buildFeatures([
