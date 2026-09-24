@@ -6,9 +6,36 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const highlights = [
-  { label: 'QPE & rain alerts', detail: 'NOAA forecasts and station alerts' },
-  { label: 'Sampling equipment', detail: 'QR-linked calibration on reports' },
-  { label: 'Synced to Storm', detail: 'Projects carry over automatically' },
+  {
+    label: 'SWPPP writing',
+    detail: 'Write a SWPPP faster than ever before',
+    image: '/Storm Laptop Project.jpg',
+    alt: 'Creating a SWPPP project on a laptop in Storm',
+    objectPosition: 'center',
+    fit: 'object-cover',
+    frameClass: 'bg-slate-950',
+    overlayClass: 'bg-gradient-to-t from-slate-900/70 via-transparent to-transparent',
+  },
+  {
+    label: 'Mapping',
+    detail: 'Built-in tool designed for SWPPP maps',
+    image: '/swppp-mapping.png',
+    alt: 'Storm SWPPP map with erosion controls on a site plan',
+    objectPosition: 'center top',
+    fit: 'object-cover',
+    frameClass: 'bg-white',
+    overlayClass: 'bg-gradient-to-t from-slate-900/35 via-transparent to-transparent',
+  },
+  {
+    label: 'Weekly',
+    detail: 'Inspect projects and track equipment',
+    image: 'https://getweekly.io/images/product-photo.webp',
+    alt: 'Weekly stormwater inspection app on a phone in the field',
+    objectPosition: 'center',
+    fit: 'object-cover',
+    frameClass: 'bg-slate-950',
+    overlayClass: 'bg-gradient-to-t from-slate-900/70 via-transparent to-transparent',
+  },
 ]
 
 const HIGHLIGHT_INTERVAL_MS = 3200
@@ -44,31 +71,24 @@ export default function WeeklyBanner() {
             className="flex-1 min-w-0 flex flex-col"
           >
             <p className="text-sm uppercase tracking-[0.3em] text-storm-secondary/90 mb-2">
-              Storm + Weekly
+              SWPPP + Mapping + Inspections
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-              Storm is now integrated with Weekly, a game-changing stormwater inspection app.
+              Experience the most powerful SWPPP creation tool in the industry.
             </h2>
             <p className="mt-3 text-white/80 text-lg max-w-2xl">
-              Every Storm account now includes full access to{' '}
-              <span className="font-semibold text-white">Weekly</span> — the
-              stormwater inspection app with patent-pending photo-first flow,
-              NOAA weather reports &amp; QPE alerts, sampling equipment tracking, inspection log exports, and much more.
-              Use your Storm login to access Weekly.
+              With Storm, you can write a SWPPP faster than ever before, create a map with our built-in tool designed specifically for SWPPP maps (an industry first!), inspect your projects and track all your analytical equipment using the included Weekly inspection app.
             </p>
 
             <div className="mt-6 flex flex-col items-start gap-2">
               <Link
-                href="https://getweekly.io"
+                href="https://app.getstorm.io"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-2.5 rounded-full font-semibold text-base text-white/90 border border-storm-secondary/40 bg-storm-primary/30 backdrop-blur-md shadow-lg shadow-storm-primary/30 transition-all duration-300 hover:bg-gradient-to-r hover:from-storm-primary hover:to-storm-secondary hover:text-white hover:border-transparent hover:shadow-storm-secondary/50"
               >
-                Open Weekly
+                Get started for $19
               </Link>
-              <p className="text-xs text-white/50">
-                Sign in with your existing Storm credentials
-              </p>
             </div>
           </motion.div>
 
@@ -80,16 +100,28 @@ export default function WeeklyBanner() {
             className="w-full max-w-xl mx-auto lg:mx-0 lg:w-[44%] lg:min-w-[20rem] lg:max-w-[34rem] shrink-0 flex"
           >
             <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden shadow-2xl shadow-storm-primary/20 flex flex-col w-full h-full min-h-[280px]">
-              <div className="relative flex-1 min-h-[160px]">
-                <Image
-                  src="https://getweekly.io/images/product-photo.webp"
-                  alt="Weekly stormwater inspection app on a phone in the field"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 544px"
-                  className="object-cover object-center"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <div className="relative flex-1 min-h-[160px] bg-slate-950">
+                <AnimatePresence initial={false}>
+                  <motion.div
+                    key={activeHighlight.image}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.45, ease: 'easeOut' }}
+                    className={`absolute inset-0 ${activeHighlight.frameClass}`}
+                  >
+                    <Image
+                      src={activeHighlight.image}
+                      alt={activeHighlight.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 544px"
+                      className={activeHighlight.fit}
+                      style={{ objectPosition: activeHighlight.objectPosition }}
+                      priority={activeIndex === 0}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                <div className={`absolute inset-0 pointer-events-none ${activeHighlight.overlayClass}`} />
               </div>
 
               <div className="px-4 py-4 bg-slate-900/50 shrink-0">
