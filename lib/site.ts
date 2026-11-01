@@ -5,7 +5,7 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_STORM_API_URL?.replace(/\/$/, '') ??
     (process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000/api'
-      : 'https://app.getstorm.io/api'),
+      : 'https://api.getstorm.io/api'),
   appLoginUrl: 'https://app.getstorm.io/auth/login',
   title: 'Storm - Write Construction SWPPPs Faster & Smarter',
   description:
