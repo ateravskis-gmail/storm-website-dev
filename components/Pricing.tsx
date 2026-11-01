@@ -1,135 +1,13 @@
 'use client'
 
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-
-type BillingCycle = 'monthly' | 'annual'
-
-type FeatureItem = {
-  key: string
-  content: ReactNode
-}
-
-const sharedBenefits: FeatureItem[] = [
-  { key: 'team', content: 'Unlimited team members' },
-  { key: 'revisions', content: 'Unlimited revisions and exports' },
-  {
-    key: 'weekly',
-    content: (
-      <>
-        Free subscription to{' '}
-        <a
-          href="https://getweekly.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-storm-primary underline decoration-dashed underline-offset-4"
-        >
-          Weekly.io
-        </a>
-      </>
-    ),
-  },
-]
-
-const buildFeatures = (base: FeatureItem[]): FeatureItem[] => [
-  ...base,
-  ...sharedBenefits,
-]
-
-const expressFeatures = buildFeatures([
-  { key: 'express-project', content: '1 project' },
-  { key: 'express-support', content: 'Limited support' },
-])
-
-const proFeatures = buildFeatures([
-  { key: 'pro-projects', content: '10 projects' },
-  { key: 'pro-support', content: 'Dedicated support' },
-])
-
-const businessFeatures = buildFeatures([
-  { key: 'business-projects', content: 'Unlimited projects' },
-  { key: 'business-support', content: 'Dedicated support' },
-])
-
-const pricingPlans: Record<
-  BillingCycle,
-  Array<{
-    name: string
-    price: string
-    cadence: string
-    description: string
-    features: FeatureItem[]
-    badge?: string
-    highlight?: boolean
-    billingNote?: string
-    originalPrice?: string
-    savingsCopy?: string
-  }>
-> = {
-  monthly: [
-    {
-      name: 'Express',
-      price: '$19',
-      cadence: '/month',
-      description: 'Perfect for getting started',
-      features: expressFeatures,
-    },
-    {
-      name: 'Pro',
-      price: '$59',
-      cadence: '/month',
-      description: 'For professionals and small teams',
-      features: proFeatures,
-      highlight: true,
-    },
-    {
-      name: 'Business',
-      price: '$199',
-      cadence: '/month',
-      description: 'For growing businesses and teams',
-      features: businessFeatures,
-    },
-  ],
-  annual: [
-    {
-      name: 'Express',
-      price: '$15',
-      cadence: '/month',
-      billingNote: 'billed annually',
-      originalPrice: '$599.88',
-      savingsCopy: 'Save $149.88',
-      description: 'Perfect for getting started',
-      features: expressFeatures,
-      badge: '25% OFF',
-    },
-    {
-      name: 'Pro',
-      price: '$49',
-      cadence: '/month',
-      billingNote: 'billed annually',
-      originalPrice: '$1,559.88',
-      savingsCopy: 'Save $660',
-      description: 'For professionals and small teams',
-      features: proFeatures,
-      badge: '42.3% OFF',
-      highlight: true,
-    },
-    {
-      name: 'Business',
-      price: '$149',
-      cadence: '/month',
-      billingNote: 'billed annually',
-      originalPrice: '$5,399.88',
-      savingsCopy: 'Save $3,000',
-      description: 'For growing businesses and teams',
-      features: businessFeatures,
-      badge: '55.6% OFF',
-    },
-  ],
-}
+import PlanCheckoutModal from './PlanCheckoutModal'
+import { BillingCycle, PlanCheckoutDetails, pricingPlans } from './pricing-plans'
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly')
+  const [selectedPlan, setSelectedPlan] = useState<PlanCheckoutDetails | null>(null)
   const plans = pricingPlans[billingCycle]
 
   return (
@@ -184,7 +62,7 @@ export default function Pricing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative rounded-3xl bg-white p-8 shadow-xl border ${
-                plan.highlight ? 'border-storm-primary/40 shadow-storm-primary/20' : 'border-gray-100'
+                plan.name === 'Pro' ? 'border-storm-primary/40 shadow-storm-primary/20' : 'border-gray-100'
               }`}
             >
               <div className="mb-6">
@@ -222,18 +100,17 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <a
-                href="https://app.getstorm.io"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => setSelectedPlan(plan)}
                 className={`w-full inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition-all ${
-                  plan.highlight
+                  plan.name === 'Pro'
                     ? 'bg-gradient-to-r from-storm-primary to-storm-secondary text-white shadow-lg shadow-storm-primary/40'
                     : 'bg-storm-dark text-white hover:bg-storm-primary'
                 }`}
               >
                 Choose Plan
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -273,8 +150,13 @@ export default function Pricing() {
           </motion.div>
         </div>
       </div>
+
+      <PlanCheckoutModal
+        isOpen={Boolean(selectedPlan)}
+        plan={selectedPlan}
+        billingCycle={billingCycle}
+        onClose={() => setSelectedPlan(null)}
+      />
     </section>
   )
 }
-
-

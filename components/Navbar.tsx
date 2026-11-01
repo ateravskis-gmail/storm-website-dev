@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { siteConfig } from '@/lib/site'
 
 interface NavbarProps {
   forceScrolled?: boolean
@@ -11,7 +12,6 @@ interface NavbarProps {
 
 export default function Navbar({ forceScrolled = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
-  const [bannerVisible, setBannerVisible] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -25,23 +25,8 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    if (!mounted) return
-
-    const banner = document.getElementById('weekly-banner')
-    if (!banner) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setBannerVisible(entry.isIntersecting),
-      { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
-    )
-
-    observer.observe(banner)
-    return () => observer.disconnect()
-  }, [mounted])
-
   const isScrolled = forceScrolled || scrolled
-  const useLightNav = bannerVisible && !isScrolled
+  const useLightNav = !isScrolled
   const linkColor = useLightNav
     ? 'text-white/90 hover:text-storm-secondary'
     : 'text-gray-700 hover:text-storm-primary'
@@ -69,17 +54,15 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="/#features" className={`${linkColor} transition-colors`}>Features</a>
-              <a href="/#how-it-works" className={`${linkColor} transition-colors`}>How It Works</a>
+              {/* Temporarily hidden: <a href="/#how-it-works" className={`${linkColor} transition-colors`}>How It Works</a> */}
               <a href="/#testimonials" className={`${linkColor} transition-colors`}>Testimonials</a>
               <a href="/#pricing" className={`${linkColor} transition-colors`}>Pricing</a>
               <Link href="/blog" className={`${linkColor} transition-colors`}>Blog</Link>
               <a 
-                href="https://app.getstorm.io"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={siteConfig.appLoginUrl}
                 className="px-6 py-2 bg-gradient-storm text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
               >
-                Get Started
+                Login
               </a>
             </div>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={`md:hidden p-2 ${mobileMenuBtnColor}`}>
@@ -130,9 +113,9 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
             <a href="/#features" className={`${linkColor} transition-colors`}>
               Features
             </a>
-            <a href="/#how-it-works" className={`${linkColor} transition-colors`}>
+            {/* Temporarily hidden: <a href="/#how-it-works" className={`${linkColor} transition-colors`}>
               How It Works
-            </a>
+            </a> */}
             <a href="/#testimonials" className={`${linkColor} transition-colors`}>
               Testimonials
             </a>
@@ -143,14 +126,12 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               Blog
             </Link>
             <motion.a
-              href="https://app.getstorm.io"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={siteConfig.appLoginUrl}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2 bg-gradient-storm text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
             >
-              Get Started
+              Login
             </motion.a>
           </div>
 
@@ -181,17 +162,15 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
           >
             <div className="px-4 py-4 space-y-4">
               <a href="/#features" className="block text-gray-700 hover:text-storm-primary">Features</a>
-              <a href="/#how-it-works" className="block text-gray-700 hover:text-storm-primary">How It Works</a>
+              {/* Temporarily hidden: <a href="/#how-it-works" className="block text-gray-700 hover:text-storm-primary">How It Works</a> */}
               <a href="/#testimonials" className="block text-gray-700 hover:text-storm-primary">Testimonials</a>
               <a href="/#pricing" className="block text-gray-700 hover:text-storm-primary">Pricing</a>
               <Link href="/blog" className="block text-gray-700 hover:text-storm-primary">Blog</Link>
               <a 
-                href="https://app.getstorm.io"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={siteConfig.appLoginUrl}
                 className="w-full px-6 py-2 bg-gradient-storm text-white rounded-full font-semibold text-center block"
               >
-                Get Started
+                Login
               </a>
             </div>
           </motion.div>

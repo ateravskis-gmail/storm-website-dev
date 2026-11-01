@@ -105,7 +105,7 @@ export default function Features() {
   }, [])
 
   return (
-    <section id="features" className="py-32 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_1px_1px,rgb(0,0,0)_1px,transparent_0)] [background-size:24px_24px]" />
       

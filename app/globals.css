@@ -24,6 +24,28 @@
   .typewriter-cursor {
     animation: blink 1s infinite;
   }
+
+  .feature-shot-mask {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.45) 10%, #000 24%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.45) 10%, #000 24%);
+  }
+
+  .feature-shot-blur-mask {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 22%, transparent 40%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 22%, transparent 40%);
+  }
+
+  @media (min-width: 1024px) {
+    .feature-shot-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
+    }
+
+    .feature-shot-blur-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 2%, #000 12%, transparent 20%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 2%, #000 12%, transparent 20%);
+    }
+  }
   
   @keyframes blink {
     0%, 50% {

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import JsonLd from '@/components/JsonLd'
+import GetStartedPlansModal from '@/components/GetStartedPlansModal'
 import { siteConfig, isProductionSite } from '@/lib/site'
 import './globals.css'
 
@@ -94,6 +95,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <JsonLd data={[organizationSchema, websiteSchema]} />
         {children}
+        <GetStartedPlansModal />
       </body>
     </html>
   )

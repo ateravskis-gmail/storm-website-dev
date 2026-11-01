@@ -2,8 +2,8 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { openGetStartedModal } from './pricing-plans'
 
 const highlights = [
   {
@@ -81,14 +81,13 @@ export default function WeeklyBanner() {
             </p>
 
             <div className="mt-6 flex flex-col items-start gap-2">
-              <Link
-                href="https://app.getstorm.io"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={openGetStartedModal}
                 className="inline-flex items-center justify-center px-8 py-2.5 rounded-full font-semibold text-base text-white/90 border border-storm-secondary/40 bg-storm-primary/30 backdrop-blur-md shadow-lg shadow-storm-primary/30 transition-all duration-300 hover:bg-gradient-to-r hover:from-storm-primary hover:to-storm-secondary hover:text-white hover:border-transparent hover:shadow-storm-secondary/50"
               >
                 Get started for $19
-              </Link>
+              </button>
             </div>
           </motion.div>
 

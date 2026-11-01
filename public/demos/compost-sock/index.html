@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compost Sock · Drag and drop demo</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#eef2f7; min-height:100vh; display:grid; place-items:center; font-family:system-ui,sans-serif; color:#344155; padding:32px; }
+  main { width:min(1440px,100%); }
+  video { display:block; width:100%; aspect-ratio:16/9; border-radius:16px; box-shadow:0 18px 70px #24375318; background:#f7f9fb; }
+  footer { display:flex; align-items:center; justify-content:space-between; margin-top:20px; font-size:14px; gap:20px; }
+  button { border:1px solid #ccd6e4; border-radius:8px; background:white; padding:9px 18px; color:inherit; cursor:pointer; }
+  a { color:#3167ed; text-decoration:none; margin-left:20px; }
+  @media(max-width:640px) { body {padding:12px;} footer {flex-wrap:wrap;} }
+</style>
+<main>
+  <video id="demo" autoplay muted loop playsinline preload="auto" poster="poster.png" aria-label="Demonstration: Compost Sock is dragged from Map BMPs into SF-1 Linear Controls. A row appears with 128.04 feet and its implementation details.">
+    <source src="compost-sock.webm" type="video/webm">
+    <source src="compost-sock.mp4" type="video/mp4">
+  </video>
+  <footer><span>Map BMPs → SF-1 Linear Controls</span><div><button id="toggle" type="button">Pause</button><a href="compost-sock.mp4" download>MP4</a><a href="compost-sock.webm" download>WebM</a><a href="compost-sock.gif" download>GIF</a></div></footer>
+</main>
+<script>
+  const video=document.getElementById('demo'), toggle=document.getElementById('toggle');
+  const motion=matchMedia('(prefers-reduced-motion: reduce)');
+  function preference() { if(motion.matches) {video.autoplay=false;video.pause();} }
+  preference(); motion.addEventListener('change',preference);
+  toggle.addEventListener('click',()=>video.paused?video.play():video.pause());
+  video.addEventListener('play',()=>toggle.textContent='Pause');
+  video.addEventListener('pause',()=>toggle.textContent='Play');
+  if(motion.matches) toggle.textContent='Play';
+</script>
+</html>

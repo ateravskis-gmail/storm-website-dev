@@ -1,6 +1,12 @@
 export const siteConfig = {
   name: 'Storm',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://getstorm.io',
+  stormApiUrl:
+    process.env.NEXT_PUBLIC_STORM_API_URL?.replace(/\/$/, '') ??
+    (process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000/api'
+      : 'https://app.getstorm.io/api'),
+  appLoginUrl: 'https://app.getstorm.io/auth/login',
   title: 'Storm - Write Construction SWPPPs Faster & Smarter',
   description:
     'Streamline your Storm Water Pollution Prevention Plan writing with Storm. Professional, compliant SWPPPs for civil engineers, QSDs, and stormwater consultants.',

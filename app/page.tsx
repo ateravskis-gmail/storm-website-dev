@@ -1,32 +1,33 @@
 'use client'
 
 import Hero from '@/components/Hero'
-import Features from '@/components/Features'
+// Temporarily hidden: the Everything You Need section.
+// import Features from '@/components/Features'
 import ExamplePDF from '@/components/ExamplePDF'
-import HowItWorks from '@/components/HowItWorks'
+// import HowItWorks from '@/components/HowItWorks'
 import Testimonials from '@/components/Testimonials'
 import Pricing from '@/components/Pricing'
 import Team from '@/components/Team'
-import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import WeeklyBanner from '@/components/WeeklyBanner'
+import FeatureTabs from '@/components/FeatureTabs'
+// import WeeklyBanner from '@/components/WeeklyBanner'
 // import SaleBanner from '@/components/SaleBanner'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <WeeklyBanner />
+      {/* <WeeklyBanner /> */}
       {/* <SaleBanner /> */}
       <Hero />
+      <FeatureTabs />
       <ExamplePDF />
-      <Features />
-      <HowItWorks />
       <Testimonials />
+      {/* <Features /> */}
+      {/* Temporarily hidden: <HowItWorks /> */}
       <Pricing />
       <Team />
-      <CTA />
       <Footer />
     </main>
   )

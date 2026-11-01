@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { openGetStartedModal } from './pricing-plans'
 
 export default function CTA() {
   const [mounted, setMounted] = useState(false)
@@ -69,16 +70,15 @@ export default function CTA() {
             Signup today to get started.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              href="https://app.getstorm.io"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              type="button"
+              onClick={openGetStartedModal}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white text-storm-primary rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow text-center"
             >
               Get Started
-            </motion.a>
+            </motion.button>
             <motion.button
               onClick={() => setIsModalOpen(true)}
               whileHover={{ scale: 1.05 }}

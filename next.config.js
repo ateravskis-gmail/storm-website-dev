@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep production builds from replacing assets used by the live dev server.
+  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   images: {
     remotePatterns: [
       {
