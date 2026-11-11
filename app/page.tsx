@@ -12,11 +12,11 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import FeatureTabs from '@/components/FeatureTabs'
 import SaleBanner from '@/components/SaleBanner'
-import { isBlackFridaySaleActive } from '@/lib/black-friday-sale'
+import { useBlackFridaySale } from '@/lib/black-friday-sale'
 // import WeeklyBanner from '@/components/WeeklyBanner'
 
 export default function Home() {
-  const saleActive = isBlackFridaySaleActive()
+  const { saleActive } = useBlackFridaySale()
 
   return (
     <main className="min-h-screen">

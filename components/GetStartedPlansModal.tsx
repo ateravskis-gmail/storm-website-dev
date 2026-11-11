@@ -8,14 +8,18 @@ import {
   pricingPlans,
   startCheckoutSession,
 } from './pricing-plans'
+import PlanPrice from './PlanPrice'
+import { useBlackFridaySale } from '@/lib/black-friday-sale'
 
 export default function GetStartedPlansModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly')
   const [submittingPlan, setSubmittingPlan] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { saleActive } = useBlackFridaySale()
   const plans = pricingPlans[billingCycle]
   const isSubmitting = Boolean(submittingPlan)
+  const showAnnualSale = saleActive && billingCycle === 'annual'
 
   useEffect(() => {
     const handleOpen = () => {
@@ -156,9 +160,13 @@ export default function GetStartedPlansModal() {
                   >
                     <h4 className="text-xl font-semibold text-gray-900">{plan.name}</h4>
                     <p className="text-sm text-gray-500">{plan.description}</p>
-                    <div className="mt-4 flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                      <span className="text-gray-500">{plan.cadence}</span>
+                    <div className="mt-4">
+                      <PlanPrice
+                        price={plan.price}
+                        cadence={plan.cadence}
+                        showSale={showAnnualSale}
+                        size="md"
+                      />
                     </div>
                     {plan.billingNote && (
                       <p className="mt-1 text-sm text-gray-500">{plan.billingNote}</p>

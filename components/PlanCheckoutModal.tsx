@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BillingCycle, PlanCheckoutDetails, startCheckoutSession } from './pricing-plans'
+import PlanPrice from './PlanPrice'
+import { useBlackFridaySale } from '@/lib/black-friday-sale'
 
 export type { PlanCheckoutDetails }
 
@@ -21,6 +23,8 @@ export default function PlanCheckoutModal({
 }: PlanCheckoutModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { saleActive } = useBlackFridaySale()
+  const showAnnualSale = saleActive && billingCycle === 'annual'
 
   useEffect(() => {
     if (isOpen) {
@@ -101,9 +105,8 @@ export default function PlanCheckoutModal({
               <h3 className="mt-2 text-3xl font-semibold text-gray-900">{plan.name}</h3>
               <p className="mt-1 text-gray-500">{plan.description}</p>
 
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                <span className="text-gray-500">{plan.cadence}</span>
+              <div className="mt-6">
+                <PlanPrice price={plan.price} cadence={plan.cadence} showSale={showAnnualSale} />
               </div>
               {plan.billingNote && (
                 <p className="mt-1 text-sm text-gray-500">{plan.billingNote}</p>

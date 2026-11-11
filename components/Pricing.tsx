@@ -3,13 +3,16 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import PlanCheckoutModal from './PlanCheckoutModal'
+import PlanPrice from './PlanPrice'
 import { BillingCycle, PlanCheckoutDetails, pricingPlans } from './pricing-plans'
-import { SELECT_ANNUAL_EVENT } from '@/lib/black-friday-sale'
+import { SELECT_ANNUAL_EVENT, useBlackFridaySale } from '@/lib/black-friday-sale'
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly')
   const [selectedPlan, setSelectedPlan] = useState<PlanCheckoutDetails | null>(null)
+  const { saleActive } = useBlackFridaySale()
   const plans = pricingPlans[billingCycle]
+  const showAnnualSale = saleActive && billingCycle === 'annual'
 
   useEffect(() => {
     const selectAnnual = () => setBillingCycle('annual')
@@ -78,10 +81,11 @@ export default function Pricing() {
               </div>
 
               <div className="mb-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-500">{plan.cadence}</span>
-                </div>
+                <PlanPrice
+                  price={plan.price}
+                  cadence={plan.cadence}
+                  showSale={showAnnualSale}
+                />
                 {plan.billingNote && (
                   <p className="text-sm text-gray-500 mt-1">{plan.billingNote}</p>
                 )}

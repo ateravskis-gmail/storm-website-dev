@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import {
-  getBlackFridayTimeLeft,
-  isBlackFridaySaleActive,
+  BLACK_FRIDAY_CODE,
   openAnnualPricing,
+  useBlackFridaySale,
   type SaleTimeLeft,
 } from '@/lib/black-friday-sale'
 
@@ -16,26 +15,7 @@ const countdownUnits: Array<{ key: keyof SaleTimeLeft; label: string }> = [
 ]
 
 export default function SaleBanner() {
-  const [timeLeft, setTimeLeft] = useState<SaleTimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
-  const [saleActive, setSaleActive] = useState(() => isBlackFridaySaleActive())
-  const [clockReady, setClockReady] = useState(false)
-
-  useEffect(() => {
-    const tick = () => {
-      setSaleActive(isBlackFridaySaleActive())
-      setTimeLeft(getBlackFridayTimeLeft())
-      setClockReady(true)
-    }
-
-    tick()
-    const timer = setInterval(tick, 1000)
-    return () => clearInterval(timer)
-  }, [])
+  const { saleActive, timeLeft, clockReady } = useBlackFridaySale()
 
   if (!saleActive) return null
 
@@ -52,6 +32,8 @@ export default function SaleBanner() {
               <span className="font-bold uppercase tracking-[0.16em]">Black Friday</span>
               <span className="mx-2 text-storm-dark/40">·</span>
               50% off annual plans through November 30
+              <span className="mx-2 text-storm-dark/40">·</span>
+              Use code <span className="font-bold tracking-[0.08em]">{BLACK_FRIDAY_CODE}</span>
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-2.5">
