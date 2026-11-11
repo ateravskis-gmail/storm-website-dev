@@ -11,15 +11,18 @@ import Team from '@/components/Team'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import FeatureTabs from '@/components/FeatureTabs'
+import SaleBanner from '@/components/SaleBanner'
+import { isBlackFridaySaleActive } from '@/lib/black-friday-sale'
 // import WeeklyBanner from '@/components/WeeklyBanner'
-// import SaleBanner from '@/components/SaleBanner'
 
 export default function Home() {
+  const saleActive = isBlackFridaySaleActive()
+
   return (
     <main className="min-h-screen">
-      <Navbar />
+      <Navbar forceScrolled={saleActive} />
+      <SaleBanner />
       {/* <WeeklyBanner /> */}
-      {/* <SaleBanner /> */}
       <Hero />
       <FeatureTabs />
       <ExamplePDF />

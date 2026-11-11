@@ -1,14 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import PlanCheckoutModal from './PlanCheckoutModal'
 import { BillingCycle, PlanCheckoutDetails, pricingPlans } from './pricing-plans'
+import { SELECT_ANNUAL_EVENT } from '@/lib/black-friday-sale'
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly')
   const [selectedPlan, setSelectedPlan] = useState<PlanCheckoutDetails | null>(null)
   const plans = pricingPlans[billingCycle]
+
+  useEffect(() => {
+    const selectAnnual = () => setBillingCycle('annual')
+    window.addEventListener(SELECT_ANNUAL_EVENT, selectAnnual)
+    return () => window.removeEventListener(SELECT_ANNUAL_EVENT, selectAnnual)
+  }, [])
 
   return (
     <section id="pricing" className="py-32 bg-gray-50">
