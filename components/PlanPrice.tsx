@@ -23,12 +23,15 @@ export default function PlanPrice({ price, cadence, showSale, size = 'lg' }: Pla
             {price}
           </span>
         )}
-        <span className={`${amountClass} font-bold text-gray-900`}>
-          {showSale && <span className="sr-only">Sale price </span>}
-          {salePrice}
+        <span className="inline-flex items-baseline gap-x-2 whitespace-nowrap">
+          <span className={`${amountClass} font-bold text-gray-900`}>
+            {showSale && <span className="sr-only">Sale price </span>}
+            {salePrice}
+          </span>
+          <span className="text-gray-500">{showSale ? '/month' : cadence}</span>
         </span>
-        <span className="text-gray-500">{cadence}</span>
       </div>
+      {showSale && <p className="text-gray-500">for 12 months</p>}
       {showSale && (
         <p className="mt-1 text-sm font-semibold text-amber-700">Use code {BLACK_FRIDAY_CODE}</p>
       )}
